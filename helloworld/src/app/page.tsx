@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <>
-      <Grid container direction="row" justifyContent={"center"} alignContent={"baseline"} paddingTop={10} spacing={2}>
+      <Grid container direction="row" justifyContent={"center"} alignItems={"center"} paddingTop={10} spacing={2}>
         <Grid item>
           <TextField label="Name" variant="outlined" placeholder="Enter your name" onChange={(e) => setName(e.target.value)}/>
         </Grid>
@@ -31,7 +31,7 @@ export default function Home() {
           </Button>
         </Grid>
       </Grid>
-      <Grid container justifyContent={"center"} alignContent={"center"} paddingTop={10} spacing={2}>
+      <Grid container justifyContent={"center"} alignItems={"center"} paddingTop={10} spacing={2}>
         <Grid item>
           {displayText ? <Typography variant="h3">Hello, {displayText}!</Typography> : <></>}
         </Grid>

@@ -1,95 +1,41 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client"
+
+import {Grid, TextField, Button, Typography} from '@mui/material';
+import { useState } from 'react';
 
 export default function Home() {
+  // useState("") initializes state variable
+  // name and displayText as an empty string.
+  
+  // Each state variable has a set function
+  // used to update state variables.
+  const [name, setName] = useState("");
+  const [displayText, setDisplayText] = useState("");
+
+  // Function to handle submit button click
+  // Takes in the name at the time of click
+  const handleClick = (name: string) => {
+    // Set text to display as the name entered at time of click
+    setDisplayText(name);
+  }
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <>
+      <Grid container direction="row" justifyContent={"center"} alignContent={"baseline"} paddingTop={10} spacing={2}>
+        <Grid item>
+          <TextField label="Name" variant="outlined" placeholder="Enter your name" onChange={(e) => setName(e.target.value)}/>
+        </Grid>
+        <Grid item>
+          <Button variant="contained" onClick={() => handleClick(name)}>
+            Submit
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid container justifyContent={"center"} alignContent={"center"} paddingTop={10} spacing={2}>
+        <Grid item>
+          {displayText ? <Typography variant="h3">Hello, {displayText}!</Typography> : <></>}
+        </Grid>
+      </Grid>
+    </>
   )
 }
